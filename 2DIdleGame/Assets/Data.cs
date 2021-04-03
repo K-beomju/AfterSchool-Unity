@@ -40,7 +40,7 @@ public class Data : MonoBehaviour
     public int upStage = 1;
     public int onEnemy = 0;
 
-
+   public bool enableSpawn = false;
 
     public BigInteger gold = 1;
     BigInteger _gold = 0;
@@ -48,6 +48,12 @@ public class Data : MonoBehaviour
     int ePlueNum = 0;
 
     public Text goldTxt;
+
+    public Text attackSpeed;
+
+
+    public float ATTACK_SPEED = 1;
+    public float ATTACK_LEVEL = 1;
 
     string[] countGold = {" ","K","M","B","T"};
     List<int> goldList = new List<int>();
@@ -64,6 +70,7 @@ public class Data : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
     }
 
     public void OnClickCopyGold()
@@ -100,6 +107,9 @@ public class Data : MonoBehaviour
     }
 
     void Update() {
+
+        ATTACK_SPEED = (1/Mathf.Sqrt(ATTACK_SPEED));
+
         if(onEnemy == 10) {
             upStage++;
             onEnemy = 0;

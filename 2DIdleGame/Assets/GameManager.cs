@@ -6,15 +6,30 @@ using System.Numerics;
 
 public class GameManager : MonoBehaviour
 {
-    void Update() {
-        Data.Instance.stage.text = string.Format("Lv.{0}", Data.Instance.upStage);
-         Data.Instance.goldTxt.text = string.Format("Gold:{0}", Data.Instance.gold);
+    public int speedUp = 1;
+    void Update()
+    {
+                Data.Instance.attackSpeed = 1 / (1f * Mathf.Sqrt(Data.Instance.ATTACK_SPEED));
+        Data.Instance.ATTACK_SPEED = 100 * Data.Instance.ATTACK_SPEED * Data.Instance.ATTACK_SPEED;
 
+
+
+
+        Data.Instance.stage.text = string.Format("Lv.{0}", Data.Instance.upStage);
+        Data.Instance.goldTxt.text = string.Format("Gold:{0}", Data.Instance.gold);
+        Data.Instance.attackSpeed.text = string.Format("AttackSpeed:{0}", Data.Instance.ATTACK_SPEED);
+    }
+
+    public void Upgrading() {
+            if(Data.Instance.gold == 100 ) {
+                //Data.Instance.gold -= 100 * Data.Instance.ATTACK_SPEED * Data.Instance.ATTACK_SPEED;
+                //Data.Instance.ATTACK_SPEED++;
+            }
     }
 
 
-
-
+ /// 1초 나누기 공속  총알 나오는 간격
+//공속 레벨 돈 유지 스테이지 레벨 초기화
 
 
     /*
